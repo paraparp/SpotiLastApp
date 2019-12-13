@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+
+#Carpetas ignoradas
+node_modules/
+
 # Only exists if Bazel was run
 /bazel-out
 
