@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class SearchComponent {
   find(termino: string) {
     this.loading = true;
 
-    this.spotify.getArtist(termino.replace(' ', '+'))
+    this.spotify.getArtists(termino.replace(' ', '+'))
       .subscribe((data: any) => {
         this.artists = data;
         this.loading = false;

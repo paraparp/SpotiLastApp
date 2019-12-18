@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -14,15 +15,29 @@ export class HomeComponent {
 
   newSongs: any[] = [];
   loading: boolean;
+  error: boolean;
+  errorMessage: string;
 
-  constructor(private spotify: SpotifyService) {
+
+  constructor(private spotify: SpotifyService, private _snackBar: MatSnackBar) {
 
     this.loading = true;
+    this.error = false;
 
     this.spotify.getNewReleases()
       .subscribe((data: any) => {
         this.newSongs = data;
         this.loading = false;
+      }, (errorServicio) => {
+        this.loading = false;
+        this.error = true;
+        this.errorMessage = errorServicio.error.error.message;
       });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }

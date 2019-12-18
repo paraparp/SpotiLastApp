@@ -1,2 +1,19 @@
 <app-loading *ngIf="loading"></app-loading>
+
+
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+
+
+  <button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
+
+
+  <!-- <h3>
+    Error
+  </h3>
+  <p>
+    {{errorMessage}}
+  </p> -->
+
+</div>
 <app-cards [items]="newSongs"></app-cards>

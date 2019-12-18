@@ -15,6 +15,11 @@ import { SpotifyService } from './services/spotify.service';
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from './material/material.module';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 //Importar rutas
 
@@ -22,19 +27,29 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     SearchComponent,
     ArtistComponent,
     NavbarComponent,
     NoimagePipe,
+    DomseguroPipe,
     CardsComponent,
     LoadingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true }),
+    BrowserAnimationsModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    MaterialModule,
+    MatSnackBar
+  ],
+  exports: [
+    MatSnackBar
   ],
   providers: [SpotifyService], //Hay que importar aqui los servicios
   bootstrap: [AppComponent]

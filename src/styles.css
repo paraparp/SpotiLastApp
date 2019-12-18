@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  background-color: black;
+}
+
 body {
   background-color: black !important;
   color: white !important;
@@ -6,6 +10,15 @@ body {
 
 hr {
   border-color: white;
+}
+
+thead, tbody {
+  color: lightgrey;
+}
+
+th, tr {
+  vertical-align: middle;
+  text-align: center;
 }
 
 .puntero {
@@ -63,3 +76,14 @@ hr {
 .fadeIn {
   animation-name: fadeIn;
 }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
