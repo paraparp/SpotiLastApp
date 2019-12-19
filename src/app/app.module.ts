@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-//PARA PODER REALIZAR PETICIONES
+// PARA PODER REALIZAR PETICIONES
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -19,10 +19,7 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
-//Importar rutas
-
+import { LastfmComponent } from './components/lastfm/lastfm.component';
 
 
 @NgModule({
@@ -36,7 +33,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     NoimagePipe,
     DomseguroPipe,
     CardsComponent,
-    LoadingComponent
+    LoadingComponent,
+    LastfmComponent
   ],
   imports: [
     BrowserModule,
@@ -45,13 +43,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     CommonModule,
-    MaterialModule,
-    MatSnackBar
+    MaterialModule
   ],
   exports: [
-    MatSnackBar
+    MaterialModule
   ],
-  providers: [SpotifyService], //Hay que importar aqui los servicios
+  providers: [SpotifyService], // Hay que importar aqui los servicios
   bootstrap: [AppComponent]
 })
 export class AppModule { }

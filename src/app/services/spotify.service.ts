@@ -8,15 +8,15 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  url: string = '';
-  token: string = 'BQCiVEtLrZNahgbvsSL77B1e0W5HYdw7MKx8EuU4N1B1ZeXaLphqtkoE7L_KFZgxY0-AHwOTqH2chaeZ5Q';
+  url = '';
+  token = 'BQCiVEtLrZNahgbvsSL77B1e0W5HYdw7MKx8EuU4N1B1ZeXaLphqtkoE7L_KFZgxY0-AHwOTqH2chaeZ5Q';
 
   constructor(private http: HttpClient) { }
 
   getQuery(query: string) {
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
+      Authorization : `Bearer ${this.token}`
     });
     const url = `https://api.spotify.com/v1/${query}`;
     console.log(url);
