@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { LastfmService } from 'src/app/services/lastfm.service';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +20,14 @@ export class HomeComponent {
   errorMessage: string;
 
 
-  constructor(private spotify: SpotifyService, private _snackBar: MatSnackBar) {
+  constructor(private spotify: SpotifyService, private lastfm: LastfmService, private snackBar: MatSnackBarModule) {
 
     this.loading = true;
     this.error = false;
+
+    this.lastfm.getUserTracks().subscribe(tracks => {
+      console.log(tracks.track)
+    });
 
     this.spotify.getNewReleases()
       .subscribe((data: any) => {
@@ -32,16 +37,16 @@ export class HomeComponent {
         this.loading = false;
         this.error = true;
         this.errorMessage = errorServicio.error.error.message;
-        this.openSnackBar(this.errorMessage, 'Recargar Token')
+        // this.openSnackBar(this.errorMessage, 'Recargar Token')
       });
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 20000,
-    });
+  // openSnackBar(message: string, action: string) {
+  //   this.snackBar.open(message, action, {
+  //     duration: 20000,
+  //   });
 
-  }
+
 
 
 }

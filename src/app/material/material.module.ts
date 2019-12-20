@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -38,6 +39,9 @@ import {
   MatTreeModule
 
 } from '@angular/material/';
+=======
+import { MatSnackBarModule,  MatTableModule } from '@angular/material/';
+>>>>>>> 4fea8fe732d03331a1bcb485e5c851e6728bfdc5
 
 
 
@@ -45,6 +49,7 @@ import {
   declarations: [],
   imports: [
     CommonModule,
+<<<<<<< HEAD
 
     MatAutocompleteModule,
     MatBadgeModule,
@@ -87,5 +92,14 @@ import {
     MatSnackBarModule,
     MatTableModule,
   ],
+=======
+    MatSnackBarModule,
+    MatTableModule
+  ],
+  exports: [
+    MatSnackBarModule,
+    MatTableModule
+  ]
+>>>>>>> 4fea8fe732d03331a1bcb485e5c851e6728bfdc5
 })
 export class MaterialModule { }
