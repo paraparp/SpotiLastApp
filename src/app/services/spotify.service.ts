@@ -13,7 +13,7 @@ export class SpotifyService {
   //  Client ID     : 9b88ce9e2f9d4c7f946115e343f4d7a0
   // Client Secret : 791ec09adfe0422e96caa974780e84d6
   url: string = '';
-  token: string = 'BQDeuVpPvjZxa4ldnOTpdq_6lxd-HbzbFWfOVtLAxu9qWugBeu2IUIR7Uwu-QoMwxFvktghRQPrfsD2Miv8';
+  token: string = 'BQAf9gjjHmdpEpe0sldy9cOYheYJ6E8l9-cFPYba5HHriYFCzXggi-acTw5pYYo-W-ksQciW3gvteaSPwxU';
 
   constructor(private http: HttpClient) { }
 

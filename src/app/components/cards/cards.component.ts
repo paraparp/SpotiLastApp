@@ -22,6 +22,6 @@ export class CardsComponent {
       artistId = item.artists[0].id
     }
 
-    this.router.navigate(['/tabla', artistId])
+    this.router.navigate(['/artist', artistId])
   }
 }
