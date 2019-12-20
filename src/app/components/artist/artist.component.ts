@@ -20,7 +20,6 @@ export class ArtistComponent {
       this.getArtist(params['id']);
       this.getArtistTopTracks(params['id']);
     })
-
   }
 
   getArtist(id: string) {

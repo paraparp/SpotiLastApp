@@ -19,7 +19,8 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { TableBasicExampleComponent } from './components/table-basic-example/table-basic-example.component';
+
 
 //Importar rutas
 
@@ -36,7 +37,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     NoimagePipe,
     DomseguroPipe,
     CardsComponent,
-    LoadingComponent
+    LoadingComponent,
+    TableBasicExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +47,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     CommonModule,
-    MaterialModule,
-    MatSnackBar
+    MaterialModule
+
   ],
   exports: [
-    MatSnackBar
+    MaterialModule
   ],
   providers: [SpotifyService], //Hay que importar aqui los servicios
   bootstrap: [AppComponent]

@@ -32,12 +32,16 @@ export class HomeComponent {
         this.loading = false;
         this.error = true;
         this.errorMessage = errorServicio.error.error.message;
+        this.openSnackBar(this.errorMessage, 'Recargar Token')
       });
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 20000,
     });
+
   }
+
+
 }
