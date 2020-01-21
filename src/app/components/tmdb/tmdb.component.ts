@@ -1,26 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
   selector: 'app-tmdb',
   templateUrl: './tmdb.component.html',
-  styleUrls: ['./tmdb.component.css']
+  styles: []
 })
-export class TmdbComponent implements OnInit {
-  data: any;
+export class TmdbComponent {
 
-  constructor(public ps: PeliculasService) {
-    this.getTracks();
+  //https://github.com/jalmansa88/pelis-app/blob/master/src/app/pipes/pelicula-imagen.pipe.ts
+  displayedColumns: string[] = ['title', 'vote', 'popularity', 'cover'];
+
+
+
+  nuevasPeliculas: any[] = [];
+  loading: boolean;
+
+  constructor(private moviedb: PeliculasService) {
+
+    this.loading = true;
+
+
 
   }
 
-  ngOnInit() {
+  getFilms(year: string) {
+    this.moviedb.getBestMoviesByYear(year
+    )
+      .subscribe((data: any) => {
+
+        console.log(data);
+        this.nuevasPeliculas = data;
+        this.loading = false;
+        console.log(year);
+      });
   }
 
-  getTracks() {
-    this.ps.getPopulares().subscribe(data => {
-      this.data = data;
-      console.log(data)
-    });
-  }
 }

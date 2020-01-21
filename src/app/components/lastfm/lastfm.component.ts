@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { LastfmService } from 'src/app/services/lastfm.service';
 
 export interface PeriodicElement {
@@ -17,13 +17,13 @@ export interface PeriodicElement {
 export class LastfmComponent {
 
   displayedColumns: string[] = ['position', 'artist', 'name', 'playcount', 'cover'];
-  dataSource: any; 
+  dataSource: any;
 
   constructor(private lastfm: LastfmService) {
     this.dataSource = this.getTracks();
   }
- 
-  getTracks(){
+
+  getTracks() {
     this.lastfm.getUserTracks().subscribe(tracks => {
       this.dataSource = tracks.track;
     });

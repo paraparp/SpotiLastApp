@@ -1,54 +1,70 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Jsonp, Http, } from '@angular/http';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeliculasService {
 
+  private apikey: string = 'c621c1a131a0e141ce87483e0d33f806';
 
-  private apikey: string = "c621c1a131a0e141ce87483e0d33f806";
-  private urlMoviedb: string = "https://api.themoviedb.org/3";
-  url: string;
-  res: any[] = [];
+  constructor(private http: HttpClient) { }
 
-  constructor(private jsonp: Jsonp, private http: Http) { }
+  //Metodo para pasar URL para peticion
 
-  // getPopulares() {
-  //   let url = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&language=es`;
-  //
-  //   return this.http.get(url)
-  //     .map(res => res.json());
-  //   )
-  // }
+  getQuery(query: string) {
+    const url = `https://api.themoviedb.org/3${query}&api_key=${
+      this.apikey
+      }&language=es&callback=JSONP_CALLBACK`;
 
-  // getPopulares1(): Observable<any> {
-  //
-  //   let url = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=
-  //   ${this.apikey}&language=es&callback=JSONP_CALLBACK`;
-  //
-  //   console.log(url);
-  //
-  //   return this.jsonp.get(url)
-  //     .map(res => res.json());
-  //
-  // }
+    // Si la peticion se hace con http.get da error porque moviedb no acepta cross domain
+    //por eso es importante verificar el uso de jsonp para poder hacer solicitud a otros dominios
+    return this.http.jsonp(url, "");
+  }
 
-  getPopulares() {
+  getQueryforPelicula(query: string) {
+    const url = `https://api.themoviedb.org/3${query}?api_key=${
+      this.apikey
+      }&language=es&callback=JSONP_CALLBACK`;
 
-    let url = `${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apikey}&language=es?callback=JSONP_CALLBACK`;
+    // Si la peticion se hace con http.get da error porque moviedb no acepta cross domain
+    //por eso es importante verificar el uso de jsonp para poder hacer solicitud a otros dominios
+    return this.http.jsonp(url, "");
+  }
 
-    console.log(url);
-    return this.jsonp.get(url).pipe(map(data => data));
+  getDiscoverMovies() {
+    return this.getQuery("/discover/movie?sort_by=popularity.desc").pipe(
+      map((data: any) => data.results)
+    );
+  }
+  getBestMoviesByYear(year: string) {
 
-
+    return this.getQuery(`/discover/movie?primary_release_year=${year}&sort_by=vote_average.desc&vote_count.gte=200`).pipe(
+      map((data: any) => data.results));
   }
 
 
+  getBusquedaPeliculas(termino: string) {
+    return this.getQuery(
+      `/search/movie?query=${termino}&sort_by=popularity.desc`
+    ).pipe(map((data: any) => data.results));
+  }
 
+  getPelicula(id: string) {
+    return this.getQueryforPelicula(`/movie/${id}`).pipe(
+      map((data: any) => data)
+    );
+  }
+
+  // Otra alternativa para hacer la peticion
+  /*   getDiscoverMovies() {
+  const url = `${
+    this.urlMoviedb
+  }/discover/movie?sort_by=popularity.desc&api_key=${
+    this.apikey
+  }&language=es&callback=JSONP_CALLBACK`;
+  return this.http.jsonp(url, "").pipe(map((res: any) => res.results));
+} */
 
 }

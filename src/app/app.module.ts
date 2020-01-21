@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
 // PARA PODER REALIZAR PETICIONES
-import { HttpClientModule } from '@angular/common/http';
+
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,6 +28,7 @@ import { ProtectedComponent } from './components/protected/protected.component';
 import { TemplateComponent } from './components/template/template.component';
 import { DataComponent } from './components/data/data.component';
 import { TmdbComponent } from './components/tmdb/tmdb.component';
+
 
 
 
@@ -61,7 +63,8 @@ import { TmdbComponent } from './components/tmdb/tmdb.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    HttpClientJsonpModule
   ],
   exports: [
     MaterialModule
