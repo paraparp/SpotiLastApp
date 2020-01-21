@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <img src="assets\img\banner-ico.png" width="30" height="30" class="d-inline-block align-top" alt="">
   SpotiApp
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +19,40 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="lastfm">LastFM</a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="template">TemplateForm</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="data">DataForm</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="tmdb">TMDB</a>
+      </li>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <a class="dropdown-item" (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</a>
+        </a>
+      </li>
+
+      <li class="nav-item">
+
+        <a class="nav-link" routerLink="protected" *ngIf="auth.loggedIn"> {{profile.name}}</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" *ngIf="auth.loggedIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img [src]="profile.picture" height="28" class="rounded-circle z-depth-0" alt="">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default bg-dark">
+          <a class="dropdown-item nav-link" routerLink="protected"> Profile </a>
+          <a class="dropdown-item nav-link" (click)="auth.logout()">Log Out</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

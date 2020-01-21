@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpModule, JsonpModule, } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 // PARA PODER REALIZAR PETICIONES
 import { HttpClientModule } from '@angular/common/http';
@@ -16,11 +20,14 @@ import { NoimagePipe } from './pipes/noimage.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { LastfmComponent } from './components/lastfm/lastfm.component';
 import { TableBasicExampleComponent } from './components/table-basic-example/table-basic-example.component';
+import { ProtectedComponent } from './components/protected/protected.component';
+import { TemplateComponent } from './components/template/template.component';
+import { DataComponent } from './components/data/data.component';
+import { TmdbComponent } from './components/tmdb/tmdb.component';
+
 
 
 @NgModule({
@@ -36,7 +43,12 @@ import { TableBasicExampleComponent } from './components/table-basic-example/tab
     CardsComponent,
     LoadingComponent,
     TableBasicExampleComponent,
-    LastfmComponent
+    LastfmComponent,
+    ProtectedComponent,
+    TemplateComponent,
+    DataComponent,
+    TmdbComponent
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +57,11 @@ import { TableBasicExampleComponent } from './components/table-basic-example/tab
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    JsonpModule
   ],
   exports: [
     MaterialModule

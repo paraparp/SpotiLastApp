@@ -13,7 +13,7 @@ export class SpotifyService {
   //  Client ID     : 9b88ce9e2f9d4c7f946115e343f4d7a0
   // Client Secret : 791ec09adfe0422e96caa974780e84d6
   url: string = '';
-  token: string = 'BQAf9gjjHmdpEpe0sldy9cOYheYJ6E8l9-cFPYba5HHriYFCzXggi-acTw5pYYo-W-ksQciW3gvteaSPwxU';
+  token: string = 'BQD-FsVAEUNFLrstQTc9SNaEt1N_K9NIdakyUAlZyJxu7K4lLfBR185fzoMbQUaxl_SzIDnV-2ONz0enBB4';
 
   constructor(private http: HttpClient) { }
 
@@ -54,6 +54,18 @@ export class SpotifyService {
     return this.getQuery(`artists/${id}/top-tracks?country=ES`)
       .pipe(map(data => data['tracks']));
   }
+
+  // postPlaylist() {
+  //
+  //   const headers = new HttpHeaders({
+  //     Authorization: `Bearer ${this.token}`
+  //   });
+  //   const url = `https://api.spotify.com/v1/${query}`;
+  //   console.log(url);
+  //
+  //   return this.http.post(url, { headers });
+  //
+  // }
 
   // getAccessToken() {
   //

@@ -30,6 +30,11 @@ th, tr {
   width: 150px;
 }
 
+.img-user-circle {
+  border-radius: 90%;
+  width: 30px;
+}
+
 .card-title,
 .card-text {
   color: black;
